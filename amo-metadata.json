@@ -1,0 +1,20 @@
+{
+  "name": {
+    "en-US": "Clear Website Data+",
+    "it": "Clear Website Data+",
+    "es": "Clear Website Data+",
+    "fr": "Clear Website Data+",
+    "de": "Clear Website Data+"
+  },
+  "summary": {
+    "en-US": "Wipe cookies, cache, storage, history, downloads and permissions for the current site or for everything. Native Firefox panel look.",
+    "it": "Cancella cookie, cache, storage, cronologia, download e permessi per il sito attuale o per tutti i siti. Stile pannello Firefox nativo.",
+    "es": "Borra cookies, caché, almacenamiento, historial, descargas y permisos del sitio actual o de todos. Estilo nativo del panel de Firefox.",
+    "fr": "Effacez cookies, cache, stockage, historique, téléchargements et autorisations pour le site courant ou pour tous. Style du panneau Firefox natif.",
+    "de": "Cookies, Cache, Speicher, Verlauf, Downloads und Berechtigungen für die aktuelle Seite oder für alle löschen. Im nativen Firefox-Panel-Look."
+  },
+  "categories": ["privacy-security", "tabs"],
+  "license": "MPL-2.0",
+  "homepage_url": "https://github.com/hardfox/clear-website-data-plus",
+  "support_email": "alfio.caprino@gmail.com"
+}

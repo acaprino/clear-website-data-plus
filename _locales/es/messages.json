@@ -1,0 +1,36 @@
+{
+  "extensionName":              { "message": "Clear Website Data+" },
+  "extensionDescription":       { "message": "Borra cookies, caché, almacenamiento y más para el sitio actual o para todos los sitios, en un panel nativo de Firefox." },
+  "actionTitle":                { "message": "Borrar datos del sitio" },
+
+  "headerTitle":                { "message": "Borrar datos del sitio" },
+
+  "scopeThisSite":              { "message": "Este sitio" },
+  "scopeAllSites":              { "message": "Todos los sitios" },
+  "internalPageNotice":         { "message": "No se pueden borrar datos en esta página" },
+
+  "groupBrowsingStorage":       { "message": "Navegación y almacenamiento" },
+  "groupOther":                 { "message": "Otros" },
+
+  "typeCookies":                { "message": "Cookies" },
+  "typeCache":                  { "message": "Caché" },
+  "typeLocalStorage":           { "message": "Almacenamiento local" },
+  "typeIndexedDB":              { "message": "IndexedDB" },
+  "typeServiceWorkers":         { "message": "Service workers + Cache API" },
+  "typePluginData":             { "message": "Datos de plugins" },
+  "typeHistory":                { "message": "Historial" },
+  "typeDownloads":              { "message": "Descargas" },
+  "typeFormData":               { "message": "Datos de formularios" },
+  "typePasswords":              { "message": "Contraseñas" },
+
+  "globalChip":                 { "message": "global" },
+  "globalChipTitle":            { "message": "Firefox no puede limitar este tipo de datos a un solo sitio: se borrará globalmente." },
+
+  "clearButton":                { "message": "Borrar" },
+  "clearing":                   { "message": "Borrando…" },
+
+  "dialogErrorTitle":           { "message": "Algunos datos no se pudieron borrar" },
+  "dialogCopyDiagnostic":       { "message": "Copiar diagnóstico" },
+  "dialogClose":                { "message": "Cerrar" },
+  "dialogCopied":               { "message": "Copiado" }
+}

@@ -1,0 +1,36 @@
+{
+  "extensionName":              { "message": "Clear Website Data+" },
+  "extensionDescription":       { "message": "Cancella cookie, cache, storage e altro per il sito attuale o per tutti i siti, in un pannello Firefox nativo." },
+  "actionTitle":                { "message": "Cancella dati del sito" },
+
+  "headerTitle":                { "message": "Cancella dati del sito" },
+
+  "scopeThisSite":              { "message": "Questo sito" },
+  "scopeAllSites":              { "message": "Tutti i siti" },
+  "internalPageNotice":         { "message": "Impossibile cancellare i dati di questa pagina" },
+
+  "groupBrowsingStorage":       { "message": "Navigazione e archiviazione" },
+  "groupOther":                 { "message": "Altro" },
+
+  "typeCookies":                { "message": "Cookie" },
+  "typeCache":                  { "message": "Cache" },
+  "typeLocalStorage":           { "message": "Archiviazione locale" },
+  "typeIndexedDB":              { "message": "IndexedDB" },
+  "typeServiceWorkers":         { "message": "Service worker + Cache API" },
+  "typePluginData":             { "message": "Dati dei plugin" },
+  "typeHistory":                { "message": "Cronologia" },
+  "typeDownloads":              { "message": "Download" },
+  "typeFormData":               { "message": "Dati dei moduli" },
+  "typePasswords":              { "message": "Password" },
+
+  "globalChip":                 { "message": "globale" },
+  "globalChipTitle":            { "message": "Firefox non può limitare questo tipo di dati a un singolo sito: verrà cancellato globalmente." },
+
+  "clearButton":                { "message": "Cancella" },
+  "clearing":                   { "message": "Cancellazione…" },
+
+  "dialogErrorTitle":           { "message": "Alcuni dati non sono stati cancellati" },
+  "dialogCopyDiagnostic":       { "message": "Copia diagnostica" },
+  "dialogClose":                { "message": "Chiudi" },
+  "dialogCopied":               { "message": "Copiato" }
+}

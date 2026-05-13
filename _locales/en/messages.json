@@ -1,0 +1,36 @@
+{
+  "extensionName":              { "message": "Clear Website Data+" },
+  "extensionDescription":       { "message": "Wipe cookies, cache, storage and more for the current site or for every site, in a native Firefox panel." },
+  "actionTitle":                { "message": "Clear website data" },
+
+  "headerTitle":                { "message": "Clear Website Data" },
+
+  "scopeThisSite":              { "message": "This site" },
+  "scopeAllSites":              { "message": "All sites" },
+  "internalPageNotice":         { "message": "Cleaning data for this page is not available" },
+
+  "groupBrowsingStorage":       { "message": "Browsing & storage" },
+  "groupOther":                 { "message": "Other" },
+
+  "typeCookies":                { "message": "Cookies" },
+  "typeCache":                  { "message": "Cache" },
+  "typeLocalStorage":           { "message": "Local storage" },
+  "typeIndexedDB":              { "message": "IndexedDB" },
+  "typeServiceWorkers":         { "message": "Service workers + Cache API" },
+  "typePluginData":             { "message": "Plugin data" },
+  "typeHistory":                { "message": "History" },
+  "typeDownloads":              { "message": "Downloads" },
+  "typeFormData":               { "message": "Form data" },
+  "typePasswords":              { "message": "Passwords" },
+
+  "globalChip":                 { "message": "global" },
+  "globalChipTitle":            { "message": "Firefox cannot scope this data type to a single site. It will be cleared globally." },
+
+  "clearButton":                { "message": "Clear" },
+  "clearing":                   { "message": "Clearing…" },
+
+  "dialogErrorTitle":           { "message": "Some data couldn't be cleared" },
+  "dialogCopyDiagnostic":       { "message": "Copy diagnostic" },
+  "dialogClose":                { "message": "Close" },
+  "dialogCopied":               { "message": "Copied" }
+}

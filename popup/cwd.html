@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta content="text/html" charset="utf-8">
+  <title data-i18n="headerTitle">Clear Website Data</title>
+  <link rel="stylesheet" href="css/cwd.css">
+</head>
+<body>
+<!-- Error / diagnostic dialog (full-popup overlay) -->
+<div id="cwd-dialog-backdrop">
+  <div class="cwd-dialog">
+    <div class="cwd-dialog-message" id="cwd-dialog-message"></div>
+    <div class="cwd-dialog-body" id="cwd-dialog-body"></div>
+    <div class="cwd-dialog-footer">
+      <div class="cwd-dialog-buttons">
+        <button type="button" id="cwd-dialog-copy" data-i18n="dialogCopyDiagnostic">Copy diagnostic</button>
+        <button type="button" id="cwd-dialog-close" data-i18n="dialogClose">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" id="cwd-container">
+  <div class="title">
+    <span data-i18n="headerTitle">Clear Website Data</span>
+  </div>
+
+  <!-- Scope selector -->
+  <div class="cwd-scope" role="radiogroup" aria-label="Scope">
+    <label class="cwd-scope-option">
+      <input type="radio" name="cwd-scope" id="cwd-scope-site" value="site" checked>
+      <span data-i18n="scopeThisSite">This site</span>
+    </label>
+    <label class="cwd-scope-option">
+      <input type="radio" name="cwd-scope" id="cwd-scope-all" value="all">
+      <span data-i18n="scopeAllSites">All sites</span>
+    </label>
+  </div>
+
+  <!-- Active origin / internal-page notice -->
+  <div class="cwd-origin" id="cwd-origin" aria-live="polite"></div>
+
+  <!-- Browsing & storage group -->
+  <div class="cwd-group">
+    <div class="cwd-group-header" data-i18n="groupBrowsingStorage">Browsing &amp; storage</div>
+    <ul class="cwd-type-list" id="cwd-group-storage" role="list"></ul>
+  </div>
+
+  <!-- Other group -->
+  <div class="cwd-group">
+    <div class="cwd-group-header" data-i18n="groupOther">Other</div>
+    <ul class="cwd-type-list" id="cwd-group-other" role="list"></ul>
+  </div>
+
+  <!-- Sticky footer with Clear button -->
+  <div class="cwd-footer">
+    <button type="button" id="cwd-clear" class="cwd-clear-btn" disabled>
+      <span class="cwd-clear-label" data-i18n="clearButton">Clear</span>
+    </button>
+  </div>
+</div>
+
+<script src="../background/theme-utils.js"></script>
+<script src="js/theme-apply.js"></script>
+<script src="js/dialog.js"></script>
+<script src="js/cwd.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+{
+  "extensionName":              { "message": "Clear Website Data+" },
+  "extensionDescription":       { "message": "Cookies, Cache, Speicher und mehr für die aktuelle Seite oder für alle Seiten löschen — im nativen Firefox-Panel." },
+  "actionTitle":                { "message": "Website-Daten löschen" },
+
+  "headerTitle":                { "message": "Website-Daten löschen" },
+
+  "scopeThisSite":              { "message": "Diese Seite" },
+  "scopeAllSites":              { "message": "Alle Seiten" },
+  "internalPageNotice":         { "message": "Daten dieser Seite können nicht gelöscht werden" },
+
+  "groupBrowsingStorage":       { "message": "Browser & Speicher" },
+  "groupOther":                 { "message": "Sonstiges" },
+
+  "typeCookies":                { "message": "Cookies" },
+  "typeCache":                  { "message": "Cache" },
+  "typeLocalStorage":           { "message": "Lokaler Speicher" },
+  "typeIndexedDB":              { "message": "IndexedDB" },
+  "typeServiceWorkers":         { "message": "Service Worker + Cache API" },
+  "typePluginData":             { "message": "Plugin-Daten" },
+  "typeHistory":                { "message": "Chronik" },
+  "typeDownloads":              { "message": "Downloads" },
+  "typeFormData":               { "message": "Formulardaten" },
+  "typePasswords":              { "message": "Passwörter" },
+
+  "globalChip":                 { "message": "global" },
+  "globalChipTitle":            { "message": "Firefox kann diesen Datentyp nicht auf eine einzelne Seite beschränken: er wird global gelöscht." },
+
+  "clearButton":                { "message": "Löschen" },
+  "clearing":                   { "message": "Wird gelöscht…" },
+
+  "dialogErrorTitle":           { "message": "Einige Daten konnten nicht gelöscht werden" },
+  "dialogCopyDiagnostic":       { "message": "Diagnose kopieren" },
+  "dialogClose":                { "message": "Schließen" },
+  "dialogCopied":               { "message": "Kopiert" }
+}

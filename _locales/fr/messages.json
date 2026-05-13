@@ -1,0 +1,36 @@
+{
+  "extensionName":              { "message": "Clear Website Data+" },
+  "extensionDescription":       { "message": "Effacez cookies, cache, stockage et plus pour le site courant ou pour tous les sites, dans un panneau Firefox natif." },
+  "actionTitle":                { "message": "Effacer les données du site" },
+
+  "headerTitle":                { "message": "Effacer les données du site" },
+
+  "scopeThisSite":              { "message": "Ce site" },
+  "scopeAllSites":              { "message": "Tous les sites" },
+  "internalPageNotice":         { "message": "Impossible d'effacer les données de cette page" },
+
+  "groupBrowsingStorage":       { "message": "Navigation et stockage" },
+  "groupOther":                 { "message": "Autres" },
+
+  "typeCookies":                { "message": "Cookies" },
+  "typeCache":                  { "message": "Cache" },
+  "typeLocalStorage":           { "message": "Stockage local" },
+  "typeIndexedDB":              { "message": "IndexedDB" },
+  "typeServiceWorkers":         { "message": "Service workers + Cache API" },
+  "typePluginData":             { "message": "Données des extensions" },
+  "typeHistory":                { "message": "Historique" },
+  "typeDownloads":              { "message": "Téléchargements" },
+  "typeFormData":               { "message": "Données de formulaires" },
+  "typePasswords":              { "message": "Mots de passe" },
+
+  "globalChip":                 { "message": "global" },
+  "globalChipTitle":            { "message": "Firefox ne peut pas limiter ce type de données à un seul site : il sera effacé globalement." },
+
+  "clearButton":                { "message": "Effacer" },
+  "clearing":                   { "message": "Effacement…" },
+
+  "dialogErrorTitle":           { "message": "Certaines données n'ont pas pu être effacées" },
+  "dialogCopyDiagnostic":       { "message": "Copier le diagnostic" },
+  "dialogClose":                { "message": "Fermer" },
+  "dialogCopied":               { "message": "Copié" }
+}
