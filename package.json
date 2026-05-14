@@ -1,6 +1,6 @@
 {
   "name": "clear-website-data-plus",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Firefox extension to clear website data for the current site or all sites, with a native-Firefox-panel look.",
   "private": true,
   "scripts": {

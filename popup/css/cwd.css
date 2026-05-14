@@ -103,11 +103,11 @@ body {
   width: 16px;
   height: 16px;
   background: var(--cwd-text-secondary);
-  mask-image: url("../../icons/broom-mono.svg");
+  mask-image: url("../../icons/eraser-mono.svg");
   mask-repeat: no-repeat;
   mask-position: center;
   mask-size: contain;
-  -webkit-mask-image: url("../../icons/broom-mono.svg");
+  -webkit-mask-image: url("../../icons/eraser-mono.svg");
   -webkit-mask-repeat: no-repeat;
   -webkit-mask-position: center;
   -webkit-mask-size: contain;

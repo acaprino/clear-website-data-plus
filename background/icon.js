@@ -7,8 +7,8 @@
    in every combination.
    ============================================================ */
 
-const ICON_FOR_LIGHT_BG = { 48: "icons/broom-dark.svg"  }; // dark strokes -> visible on light toolbars
-const ICON_FOR_DARK_BG  = { 48: "icons/broom-light.svg" }; // light strokes -> visible on dark toolbars
+const ICON_FOR_LIGHT_BG = { 48: "icons/eraser-dark.svg"  }; // dark fill -> visible on light toolbars
+const ICON_FOR_DARK_BG  = { 48: "icons/eraser-light.svg" }; // light fill -> visible on dark toolbars
 
 let _osDarkMql = null;
 

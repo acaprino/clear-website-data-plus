@@ -1,6 +1,6 @@
 <div align="center">
 
-<img alt="Clear Website Data+" src="icons/broom-mono.svg" width="96">
+<img alt="Clear Website Data+" src="icons/eraser-mono.svg" width="96">
 
 # Clear Website Data+
 

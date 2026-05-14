@@ -3,7 +3,7 @@
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "icons": {
     "48": "icons/icon-48.png",
     "96": "icons/icon-96.png"
@@ -34,10 +34,10 @@
     "default_title": "__MSG_actionTitle__",
     "default_popup": "popup/cwd.html",
     "default_icon": {
-      "48": "icons/broom-dark.svg"
+      "48": "icons/eraser-dark.svg"
     },
     "theme_icons": [
-      { "light": "icons/broom-dark.svg", "dark": "icons/broom-light.svg", "size": 48 }
+      { "light": "icons/eraser-dark.svg", "dark": "icons/eraser-light.svg", "size": 48 }
     ]
   },
   "commands": {
