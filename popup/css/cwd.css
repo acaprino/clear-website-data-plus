@@ -175,6 +175,40 @@ body {
 }
 
 /* ----------------------------------------------------------
+   Time-period filter
+   ---------------------------------------------------------- */
+.cwd-time {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 2px 14px 8px;
+  font-size: 12px;
+}
+
+.cwd-time-label {
+  color: var(--cwd-text-secondary);
+  flex-shrink: 0;
+}
+
+.cwd-time-select {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 6px;
+  border-radius: var(--cwd-radius-sm);
+  border: 1px solid var(--cwd-input-border);
+  background: var(--cwd-input-bg);
+  color: var(--cwd-input-text);
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.cwd-time-select:focus-visible {
+  outline: 2px solid var(--cwd-focus);
+  outline-offset: -2px;
+}
+
+/* ----------------------------------------------------------
    Group headers + type list
    ---------------------------------------------------------- */
 .cwd-group {

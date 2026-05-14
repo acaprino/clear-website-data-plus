@@ -2,12 +2,20 @@
   "extensionName":              { "message": "Clear Website Data+" },
   "extensionDescription":       { "message": "Wipe cookies, cache, storage and more for the current site or for every site, in a native Firefox panel." },
   "actionTitle":                { "message": "Clear website data" },
+  "commandClearShortcut":       { "message": "Open the Clear Website Data+ panel" },
 
   "headerTitle":                { "message": "Clear Website Data" },
 
   "scopeThisSite":              { "message": "This site" },
   "scopeAllSites":              { "message": "All sites" },
   "internalPageNotice":         { "message": "Cleaning data for this page is not available" },
+
+  "timeLabel":                  { "message": "Time range" },
+  "timeAll":                    { "message": "All time" },
+  "time15min":                  { "message": "Last 15 minutes" },
+  "time1h":                     { "message": "Last hour" },
+  "time24h":                    { "message": "Last 24 hours" },
+  "time1w":                     { "message": "Last week" },
 
   "groupBrowsingStorage":       { "message": "Browsing & storage" },
   "groupOther":                 { "message": "Other" },
@@ -32,5 +40,18 @@
   "dialogErrorTitle":           { "message": "Some data couldn't be cleared" },
   "dialogCopyDiagnostic":       { "message": "Copy diagnostic" },
   "dialogClose":                { "message": "Close" },
-  "dialogCopied":               { "message": "Copied" }
+  "dialogCopied":               { "message": "Copied" },
+
+  "notifyFailureTitle":         { "message": "Clear Website Data+ — some data couldn't be cleared" },
+
+  "optionsTitle":               { "message": "Clear Website Data+ — Options" },
+  "optionsBehaviorTitle":       { "message": "Behavior" },
+  "optionsDiagTitle":           { "message": "Diagnostics" },
+  "optReloadLabel":             { "message": "Reload the active tab after clearing" },
+  "optReloadHint":              { "message": "When enabled, the popup closes and the active tab reloads with cache bypass." },
+  "optNotifyLabel":             { "message": "Show a system notification on failure" },
+  "optNotifyHint":              { "message": "Successes stay silent. Useful when you close the popup before the clear finishes." },
+  "optDebugLabel":              { "message": "Verbose console logging" },
+  "optDebugHint":               { "message": "Emits [CWD] entries in the Browser Console. Off by default." },
+  "optSaved":                   { "message": "Saved" }
 }

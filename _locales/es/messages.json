@@ -2,12 +2,20 @@
   "extensionName":              { "message": "Clear Website Data+" },
   "extensionDescription":       { "message": "Borra cookies, caché, almacenamiento y más para el sitio actual o para todos los sitios, en un panel nativo de Firefox." },
   "actionTitle":                { "message": "Borrar datos del sitio" },
+  "commandClearShortcut":       { "message": "Abrir el panel Clear Website Data+" },
 
   "headerTitle":                { "message": "Borrar datos del sitio" },
 
   "scopeThisSite":              { "message": "Este sitio" },
   "scopeAllSites":              { "message": "Todos los sitios" },
   "internalPageNotice":         { "message": "No se pueden borrar datos en esta página" },
+
+  "timeLabel":                  { "message": "Periodo" },
+  "timeAll":                    { "message": "Todo el tiempo" },
+  "time15min":                  { "message": "Últimos 15 minutos" },
+  "time1h":                     { "message": "Última hora" },
+  "time24h":                    { "message": "Últimas 24 horas" },
+  "time1w":                     { "message": "Última semana" },
 
   "groupBrowsingStorage":       { "message": "Navegación y almacenamiento" },
   "groupOther":                 { "message": "Otros" },
@@ -32,5 +40,18 @@
   "dialogErrorTitle":           { "message": "Algunos datos no se pudieron borrar" },
   "dialogCopyDiagnostic":       { "message": "Copiar diagnóstico" },
   "dialogClose":                { "message": "Cerrar" },
-  "dialogCopied":               { "message": "Copiado" }
+  "dialogCopied":               { "message": "Copiado" },
+
+  "notifyFailureTitle":         { "message": "Clear Website Data+ — algunos datos no se borraron" },
+
+  "optionsTitle":               { "message": "Clear Website Data+ — Opciones" },
+  "optionsBehaviorTitle":       { "message": "Comportamiento" },
+  "optionsDiagTitle":           { "message": "Diagnóstico" },
+  "optReloadLabel":             { "message": "Recargar la pestaña activa después de borrar" },
+  "optReloadHint":              { "message": "Si está activado, el panel se cierra y la página se recarga sin caché." },
+  "optNotifyLabel":             { "message": "Mostrar una notificación del sistema cuando falle" },
+  "optNotifyHint":              { "message": "Los éxitos son silenciosos. Útil cuando cierras el panel antes de que termine." },
+  "optDebugLabel":              { "message": "Registro detallado en la consola" },
+  "optDebugHint":               { "message": "Añade entradas [CWD] a la consola del navegador. Desactivado por defecto." },
+  "optSaved":                   { "message": "Guardado" }
 }

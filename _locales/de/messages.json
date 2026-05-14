@@ -2,12 +2,20 @@
   "extensionName":              { "message": "Clear Website Data+" },
   "extensionDescription":       { "message": "Cookies, Cache, Speicher und mehr für die aktuelle Seite oder für alle Seiten löschen — im nativen Firefox-Panel." },
   "actionTitle":                { "message": "Website-Daten löschen" },
+  "commandClearShortcut":       { "message": "Clear Website Data+ Panel öffnen" },
 
   "headerTitle":                { "message": "Website-Daten löschen" },
 
   "scopeThisSite":              { "message": "Diese Seite" },
   "scopeAllSites":              { "message": "Alle Seiten" },
   "internalPageNotice":         { "message": "Daten dieser Seite können nicht gelöscht werden" },
+
+  "timeLabel":                  { "message": "Zeitraum" },
+  "timeAll":                    { "message": "Gesamter Zeitraum" },
+  "time15min":                  { "message": "Letzte 15 Minuten" },
+  "time1h":                     { "message": "Letzte Stunde" },
+  "time24h":                    { "message": "Letzte 24 Stunden" },
+  "time1w":                     { "message": "Letzte Woche" },
 
   "groupBrowsingStorage":       { "message": "Browser & Speicher" },
   "groupOther":                 { "message": "Sonstiges" },
@@ -32,5 +40,18 @@
   "dialogErrorTitle":           { "message": "Einige Daten konnten nicht gelöscht werden" },
   "dialogCopyDiagnostic":       { "message": "Diagnose kopieren" },
   "dialogClose":                { "message": "Schließen" },
-  "dialogCopied":               { "message": "Kopiert" }
+  "dialogCopied":               { "message": "Kopiert" },
+
+  "notifyFailureTitle":         { "message": "Clear Website Data+ — einige Daten wurden nicht gelöscht" },
+
+  "optionsTitle":               { "message": "Clear Website Data+ — Optionen" },
+  "optionsBehaviorTitle":       { "message": "Verhalten" },
+  "optionsDiagTitle":           { "message": "Diagnose" },
+  "optReloadLabel":             { "message": "Aktiven Tab nach dem Löschen neu laden" },
+  "optReloadHint":              { "message": "Wenn aktiviert, schließt sich das Panel und die Seite wird ohne Cache neu geladen." },
+  "optNotifyLabel":             { "message": "Systembenachrichtigung bei Fehler anzeigen" },
+  "optNotifyHint":              { "message": "Erfolge bleiben still. Nützlich, wenn du das Panel vor dem Ende schließt." },
+  "optDebugLabel":              { "message": "Ausführliche Konsolenausgabe" },
+  "optDebugHint":               { "message": "Gibt [CWD]-Einträge in der Browser-Konsole aus. Standardmäßig deaktiviert." },
+  "optSaved":                   { "message": "Gespeichert" }
 }

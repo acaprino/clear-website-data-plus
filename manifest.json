@@ -3,7 +3,7 @@
   "name": "__MSG_extensionName__",
   "description": "__MSG_extensionDescription__",
   "default_locale": "en",
-  "version": "0.1.2",
+  "version": "0.2.0",
   "icons": {
     "48": "icons/icon-48.png",
     "96": "icons/icon-96.png"
@@ -24,6 +24,7 @@
     "activeTab",
     "history",
     "downloads",
+    "notifications",
     "theme"
   ],
   "content_security_policy": {
@@ -39,10 +40,24 @@
       { "light": "icons/broom-dark.svg", "dark": "icons/broom-light.svg", "size": 48 }
     ]
   },
+  "commands": {
+    "_execute_action": {
+      "suggested_key": { "default": "F9" },
+      "description": "__MSG_commandClearShortcut__"
+    }
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": false
+  },
   "background": {
     "scripts": [
       "background/theme-utils.js",
+      "background/log.js",
+      "background/icon.js",
+      "background/badge.js",
       "background/storage.js",
+      "background/notify.js",
       "background/cleaner.js",
       "background/handler.js"
     ]

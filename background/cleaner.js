@@ -188,17 +188,25 @@ async function _filterDeleteDownloads(origin) {
   return count;
 }
 
-async function clear({ scope, origin, types }) {
+async function clear({ scope, origin, types, since }) {
   const summary = {};
   const errors = [];
-  const since = 0;
+
+  // since=0 means "since beginning of time" per browsingData.remove spec.
+  // Any positive ms value is treated as "removeOptions.since" (epoch ms).
+  // Validated upstream by handler._validateClear — re-clamp defensively.
+  const _since = (typeof since === "number" && since >= 0 && Number.isFinite(since))
+    ? since : 0;
+  // The browsingData spec expects an absolute timestamp: epoch ms.
+  const sinceAbs = _since > 0 ? (Date.now() - _since) : 0;
+  summary._since = _since;
 
   // 1. Origin-aware types via browsingData.remove({origins})
   if (scope === "site") {
     const dt = _pickKeys(types, ORIGIN_AWARE);
     if (Object.keys(dt).length) {
       const r = await _safe(
-        () => browser.browsingData.remove({ origins: [origin], since }, dt),
+        () => browser.browsingData.remove({ origins: [origin], since: sinceAbs }, dt),
         "browsingDataSite",
       );
       if (r.ok) Object.assign(summary, dt);
@@ -208,7 +216,7 @@ async function clear({ scope, origin, types }) {
     const dt = _pickKeys(types, ALL_SCOPE_BROWSING_DATA);
     if (Object.keys(dt).length) {
       const r = await _safe(
-        () => browser.browsingData.remove({ since }, dt),
+        () => browser.browsingData.remove({ since: sinceAbs }, dt),
         "browsingDataAll",
       );
       if (r.ok) Object.assign(summary, dt);
@@ -248,7 +256,7 @@ async function clear({ scope, origin, types }) {
     if (optedIn.length) {
       const dt = Object.fromEntries(optedIn.map(t => [t, true]));
       const r = await _safe(
-        () => browser.browsingData.remove({ since }, dt),
+        () => browser.browsingData.remove({ since: sinceAbs }, dt),
         "globalFallback",
       );
       if (r.ok) {

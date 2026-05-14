@@ -40,6 +40,18 @@
   <!-- Active origin / internal-page notice -->
   <div class="cwd-origin" id="cwd-origin" aria-live="polite"></div>
 
+  <!-- Time-period filter -->
+  <div class="cwd-time">
+    <label class="cwd-time-label" for="cwd-since" data-i18n="timeLabel">Time range</label>
+    <select id="cwd-since" class="cwd-time-select">
+      <option value="0"          data-i18n="timeAll">All time</option>
+      <option value="900000"     data-i18n="time15min">Last 15 minutes</option>
+      <option value="3600000"    data-i18n="time1h">Last hour</option>
+      <option value="86400000"   data-i18n="time24h">Last 24 hours</option>
+      <option value="604800000"  data-i18n="time1w">Last week</option>
+    </select>
+  </div>
+
   <!-- Browsing & storage group -->
   <div class="cwd-group">
     <div class="cwd-group-header" data-i18n="groupBrowsingStorage">Browsing &amp; storage</div>

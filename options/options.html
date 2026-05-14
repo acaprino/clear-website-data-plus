@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title data-i18n="optionsTitle">Clear Website Data+ — Options</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+<main class="opt">
+  <h1 class="opt-title" data-i18n="optionsTitle">Clear Website Data+ — Options</h1>
+
+  <section class="opt-section">
+    <h2 class="opt-section-title" data-i18n="optionsBehaviorTitle">Behavior</h2>
+
+    <label class="opt-row">
+      <input type="checkbox" id="opt-reload">
+      <span class="opt-row-text">
+        <span class="opt-label" data-i18n="optReloadLabel">Reload the active tab after clearing</span>
+        <span class="opt-hint" data-i18n="optReloadHint">When enabled, the popup closes and the active tab reloads with cache bypass.</span>
+      </span>
+    </label>
+
+    <label class="opt-row">
+      <input type="checkbox" id="opt-notify">
+      <span class="opt-row-text">
+        <span class="opt-label" data-i18n="optNotifyLabel">Show a system notification on failure</span>
+        <span class="opt-hint" data-i18n="optNotifyHint">Successes stay silent. Useful when you close the popup before the clear finishes.</span>
+      </span>
+    </label>
+  </section>
+
+  <section class="opt-section">
+    <h2 class="opt-section-title" data-i18n="optionsDiagTitle">Diagnostics</h2>
+
+    <label class="opt-row">
+      <input type="checkbox" id="opt-debug">
+      <span class="opt-row-text">
+        <span class="opt-label" data-i18n="optDebugLabel">Verbose console logging</span>
+        <span class="opt-hint" data-i18n="optDebugHint">Emits [CWD] entries in the Browser Console / Toolbox. Off by default.</span>
+      </span>
+    </label>
+  </section>
+
+  <div class="opt-status" id="opt-status" role="status" aria-live="polite"></div>
+</main>
+
+<script src="options.js"></script>
+</body>
+</html>

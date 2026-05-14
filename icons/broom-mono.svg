@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-     fill="none" stroke="currentColor" stroke-width="1.2"
+     fill="none" stroke="currentColor" stroke-width="0.9"
      stroke-linejoin="round" stroke-linecap="round">
   <!-- Outer bin body -->
   <path d="M20 11.9V10a3 3 0 0 0-3-3h-2V5a3 3 0 0 0-6 0v2H7a3 3 0 0 0-3 3v1.9L2.02 20.78A1 1 0 0 0 3 22h18a1 1 0 0 0 .98-1.22Z"/>

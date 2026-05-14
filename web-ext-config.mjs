@@ -25,6 +25,9 @@ export default {
     "icons/_make-pngs.py",
     ".deep-dive",
     ".team-review",
+    "claude_.bat",
+    "scripts",
+    "CLAUDE.md",
   ],
   run: {
     firefox: "firefox",

@@ -2,12 +2,20 @@
   "extensionName":              { "message": "Clear Website Data+" },
   "extensionDescription":       { "message": "Effacez cookies, cache, stockage et plus pour le site courant ou pour tous les sites, dans un panneau Firefox natif." },
   "actionTitle":                { "message": "Effacer les données du site" },
+  "commandClearShortcut":       { "message": "Ouvrir le panneau Clear Website Data+" },
 
   "headerTitle":                { "message": "Effacer les données du site" },
 
   "scopeThisSite":              { "message": "Ce site" },
   "scopeAllSites":              { "message": "Tous les sites" },
   "internalPageNotice":         { "message": "Impossible d'effacer les données de cette page" },
+
+  "timeLabel":                  { "message": "Période" },
+  "timeAll":                    { "message": "Tout le temps" },
+  "time15min":                  { "message": "15 dernières minutes" },
+  "time1h":                     { "message": "Dernière heure" },
+  "time24h":                    { "message": "24 dernières heures" },
+  "time1w":                     { "message": "Dernière semaine" },
 
   "groupBrowsingStorage":       { "message": "Navigation et stockage" },
   "groupOther":                 { "message": "Autres" },
@@ -32,5 +40,18 @@
   "dialogErrorTitle":           { "message": "Certaines données n'ont pas pu être effacées" },
   "dialogCopyDiagnostic":       { "message": "Copier le diagnostic" },
   "dialogClose":                { "message": "Fermer" },
-  "dialogCopied":               { "message": "Copié" }
+  "dialogCopied":               { "message": "Copié" },
+
+  "notifyFailureTitle":         { "message": "Clear Website Data+ — certaines données n'ont pas été effacées" },
+
+  "optionsTitle":               { "message": "Clear Website Data+ — Options" },
+  "optionsBehaviorTitle":       { "message": "Comportement" },
+  "optionsDiagTitle":           { "message": "Diagnostic" },
+  "optReloadLabel":             { "message": "Recharger l'onglet actif après l'effacement" },
+  "optReloadHint":              { "message": "Si activé, le panneau se ferme et la page se recharge sans le cache." },
+  "optNotifyLabel":             { "message": "Afficher une notification système en cas d'échec" },
+  "optNotifyHint":              { "message": "Les succès restent silencieux. Utile lorsque vous fermez le panneau avant la fin." },
+  "optDebugLabel":              { "message": "Journalisation verbeuse dans la console" },
+  "optDebugHint":               { "message": "Affiche les entrées [CWD] dans la console du navigateur. Désactivé par défaut." },
+  "optSaved":                   { "message": "Enregistré" }
 }

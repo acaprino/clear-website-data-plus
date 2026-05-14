@@ -1,7 +1,8 @@
 /* ============================================================
    Clear Website Data+ — Message dispatcher
    Actions: "clear", "getPrefs", "setPrefs". Validates shape,
-   hands off to cleaner/storage.
+   hands off to cleaner/storage. Updates badge + notifications
+   as a side-effect of every clear.
    ============================================================ */
 
 function _isValidOrigin(s) {
@@ -28,6 +29,11 @@ function _validateClear(req) {
       return "invalid_type:" + String(t);
     }
   }
+  if (req.since !== undefined && req.since !== null) {
+    if (typeof req.since !== "number" || !CWD_STORAGE.ALLOWED_SINCE.includes(req.since)) {
+      return "invalid_since";
+    }
+  }
   return null;
 }
 
@@ -40,9 +46,22 @@ function _isAllowedSender(sender) {
   return true;
 }
 
+async function _handleClear(msg) {
+  const result = await CWD_CLEANER.clear({
+    scope: msg.scope,
+    origin: msg.origin || null,
+    types: [...msg.types],
+    since: typeof msg.since === "number" ? msg.since : 0,
+  });
+  // Side effects fire-and-forget — clearing must not be gated on badge UI.
+  CWD_BADGE.update(result).catch(() => {});
+  CWD_NOTIFY.maybeNotify(result).catch(() => {});
+  return result;
+}
+
 browser.runtime.onMessage.addListener((msg, sender) => {
   if (!_isAllowedSender(sender)) {
-    console.warn("[CWD][handler] rejected message from foreign context:", sender?.url || sender?.id);
+    CWD_LOG.warn("[CWD][handler] rejected message from foreign context:", sender?.url || sender?.id);
     return;
   }
   if (!msg || typeof msg !== "object") return;
@@ -51,14 +70,14 @@ browser.runtime.onMessage.addListener((msg, sender) => {
     case "clear": {
       const err = _validateClear(msg);
       if (err) {
-        console.warn("[CWD][handler] validation failed:", err);
-        return Promise.resolve({ ok: false, summary: {}, errors: [{ phase: "validation", message: err }] });
+        CWD_LOG.warn("[CWD][handler] validation failed:", err);
+        const validationResult = {
+          ok: false, summary: {}, errors: [{ phase: "validation", message: err }],
+        };
+        CWD_BADGE.update(validationResult).catch(() => {});
+        return Promise.resolve(validationResult);
       }
-      return CWD_CLEANER.clear({
-        scope: msg.scope,
-        origin: msg.origin || null,
-        types: [...msg.types],
-      });
+      return _handleClear(msg);
     }
     case "getPrefs":
       return CWD_STORAGE.getPrefs();
@@ -72,9 +91,35 @@ browser.runtime.onMessage.addListener((msg, sender) => {
         e => ({ ok: false, error: e?.message || String(e) }),
       );
     }
+
+    case "clearBadge":
+      CWD_BADGE.clear().catch(() => {});
+      return Promise.resolve({ ok: true });
+
     default:
       return; // ignore unrelated messages
   }
 });
 
-console.log("[CWD] background ready");
+// Live-sync the debug flag with prefs storage so toggling the option in the
+// options page takes effect without a reload.
+async function _initFromPrefs() {
+  try {
+    const prefs = await CWD_STORAGE.getPrefs();
+    CWD_LOG.setDebug(prefs.debug);
+    CWD_LOG.debug("[CWD] background ready (debug enabled)");
+  } catch (e) {
+    CWD_LOG.warn("[CWD][handler] _initFromPrefs failed:", e?.message);
+  }
+}
+
+browser.storage.onChanged.addListener((changes, area) => {
+  if (area !== "local") return;
+  const change = changes[CWD_STORAGE.PREFS_KEY];
+  if (!change?.newValue) return;
+  if (typeof change.newValue.debug === "boolean") {
+    CWD_LOG.setDebug(change.newValue.debug);
+  }
+});
+
+_initFromPrefs();

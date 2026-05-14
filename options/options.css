@@ -1,0 +1,130 @@
+/* ============================================================
+   Clear Website Data+ — Options page
+   Embedded inside about:addons. Inherits the host frame's color
+   scheme via `color-scheme: light dark`; falls back to CSS system
+   colors so the panel always reads correctly.
+   ============================================================ */
+
+:root {
+  --opt-bg:    Canvas;
+  --opt-text:  CanvasText;
+  --opt-muted: color-mix(in srgb, CanvasText 55%, transparent);
+  --opt-hover: color-mix(in srgb, CanvasText 8%, transparent);
+  --opt-border: color-mix(in srgb, CanvasText 18%, transparent);
+  --opt-accent: AccentColor;
+  --opt-accent-text: AccentColorText;
+  --opt-radius: 6px;
+
+  color-scheme: light dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; background: var(--opt-bg); color: var(--opt-text); }
+
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+}
+
+.opt {
+  max-width: 560px;
+  margin: 0 auto;
+  padding: 16px 18px 24px;
+}
+
+.opt-title {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 16px;
+}
+
+.opt-section {
+  margin-bottom: 18px;
+  padding-top: 8px;
+  border-top: 1px solid var(--opt-border);
+}
+
+.opt-section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.opt-section-title {
+  font-size: 10.5px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--opt-muted);
+  margin: 0 0 8px;
+}
+
+.opt-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 8px 8px;
+  margin: 2px -8px;
+  border-radius: var(--opt-radius);
+  cursor: pointer;
+  transition: background-color 0.08s ease-out;
+}
+
+.opt-row:hover { background: var(--opt-hover); }
+
+.opt-row input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  margin-top: 1px;
+  flex-shrink: 0;
+  accent-color: var(--opt-accent);
+  cursor: pointer;
+}
+
+.opt-row-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.opt-label {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.opt-hint {
+  font-size: 11.5px;
+  color: var(--opt-muted);
+}
+
+.opt-status {
+  position: fixed;
+  bottom: 12px;
+  right: 16px;
+  padding: 4px 10px;
+  border-radius: var(--opt-radius);
+  background: var(--opt-accent);
+  color: var(--opt-accent-text);
+  font-size: 11.5px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.18s ease-out, transform 0.18s ease-out;
+  pointer-events: none;
+}
+
+.opt-status.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 2px solid var(--opt-accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .opt-row, .opt-status { transition: none; }
+}

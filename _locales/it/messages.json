@@ -2,12 +2,20 @@
   "extensionName":              { "message": "Clear Website Data+" },
   "extensionDescription":       { "message": "Cancella cookie, cache, storage e altro per il sito attuale o per tutti i siti, in un pannello Firefox nativo." },
   "actionTitle":                { "message": "Cancella dati del sito" },
+  "commandClearShortcut":       { "message": "Apri il pannello Clear Website Data+" },
 
   "headerTitle":                { "message": "Cancella dati del sito" },
 
   "scopeThisSite":              { "message": "Questo sito" },
   "scopeAllSites":              { "message": "Tutti i siti" },
   "internalPageNotice":         { "message": "Impossibile cancellare i dati di questa pagina" },
+
+  "timeLabel":                  { "message": "Periodo" },
+  "timeAll":                    { "message": "Sempre" },
+  "time15min":                  { "message": "Ultimi 15 minuti" },
+  "time1h":                     { "message": "Ultima ora" },
+  "time24h":                    { "message": "Ultime 24 ore" },
+  "time1w":                     { "message": "Ultima settimana" },
 
   "groupBrowsingStorage":       { "message": "Navigazione e archiviazione" },
   "groupOther":                 { "message": "Altro" },
@@ -32,5 +40,18 @@
   "dialogErrorTitle":           { "message": "Alcuni dati non sono stati cancellati" },
   "dialogCopyDiagnostic":       { "message": "Copia diagnostica" },
   "dialogClose":                { "message": "Chiudi" },
-  "dialogCopied":               { "message": "Copiato" }
+  "dialogCopied":               { "message": "Copiato" },
+
+  "notifyFailureTitle":         { "message": "Clear Website Data+ — alcuni dati non sono stati cancellati" },
+
+  "optionsTitle":               { "message": "Clear Website Data+ — Opzioni" },
+  "optionsBehaviorTitle":       { "message": "Comportamento" },
+  "optionsDiagTitle":           { "message": "Diagnostica" },
+  "optReloadLabel":             { "message": "Ricarica la scheda attiva dopo la cancellazione" },
+  "optReloadHint":              { "message": "Se attivo, il pannello si chiude e la pagina viene ricaricata senza cache." },
+  "optNotifyLabel":             { "message": "Mostra una notifica di sistema in caso di errore" },
+  "optNotifyHint":              { "message": "I successi restano silenziosi. Utile quando chiudi il pannello prima della fine." },
+  "optDebugLabel":              { "message": "Log di debug nella console" },
+  "optDebugHint":               { "message": "Aggiunge voci [CWD] alla Console del browser. Disattivato di default." },
+  "optSaved":                   { "message": "Salvato" }
 }

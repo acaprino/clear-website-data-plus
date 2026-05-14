@@ -3,8 +3,9 @@
    Wires up:
      - i18n substitution on data-i18n attributes
      - theme detection + LWT var injection (theme-apply.js)
-     - scope radio + checkbox list (defaults from storage via background)
-     - "Clear" action -> background -> tab reload
+     - scope radio + time-period select + checkbox list (defaults
+       from storage via background)
+     - "Clear" action -> background -> optional tab reload
    ============================================================ */
 
 const INTERNAL_SCHEMES = new Set([
@@ -13,6 +14,9 @@ const INTERNAL_SCHEMES = new Set([
 ]);
 
 const PREFS_KEY = "cwd.prefs.v1";
+
+// Whitelist of allowed `since` values (ms). Must match storage.js ALLOWED_SINCE.
+const ALLOWED_SINCE = new Set([0, 900000, 3600000, 86400000, 604800000]);
 
 const GROUPS = Object.freeze([
   Object.freeze({
@@ -91,7 +95,7 @@ function _buildTypeList(groupSpec, checkedSet) {
   }
 }
 
-function _syncCheckboxesFrom(prefs) {
+function _syncFromPrefs(prefs) {
   const checked = new Set(prefs.types || []);
   document.querySelectorAll(".cwd-type-list input[type=checkbox]").forEach(cb => {
     cb.checked = checked.has(cb.dataset.type);
@@ -99,6 +103,12 @@ function _syncCheckboxesFrom(prefs) {
   const scope = prefs.scope === "all" ? "all" : "site";
   const radio = document.getElementById(scope === "all" ? "cwd-scope-all" : "cwd-scope-site");
   if (radio && !radio.disabled) radio.checked = true;
+
+  const sinceSel = document.getElementById("cwd-since");
+  if (sinceSel) {
+    const v = String(typeof prefs.since === "number" ? prefs.since : 0);
+    if ([...sinceSel.options].some(o => o.value === v)) sinceSel.value = v;
+  }
 }
 
 function _getCheckedTypes() {
@@ -110,6 +120,12 @@ function _getCheckedTypes() {
 function _getScope() {
   const checked = document.querySelector("input[name=cwd-scope]:checked");
   return checked?.value || "site";
+}
+
+function _getSince() {
+  const sel = document.getElementById("cwd-since");
+  const v = sel ? Number(sel.value) : 0;
+  return ALLOWED_SINCE.has(v) ? v : 0;
 }
 
 function _isInternalUrl(url) {
@@ -158,7 +174,7 @@ function _setSiteState(state) {
 // Persist prefs through the background — single writer collapses the I3/I4 race.
 let _persistChain = Promise.resolve();
 function _persistPrefs() {
-  const prefs = { scope: _getScope(), types: _getCheckedTypes() };
+  const prefs = { scope: _getScope(), types: _getCheckedTypes(), since: _getSince() };
   _persistChain = _persistChain
     .then(() => browser.runtime.sendMessage({ action: "setPrefs", prefs }))
     .catch(() => {});
@@ -181,6 +197,7 @@ async function _onClearClick() {
 
   const scope = _getScope();
   const types = _getCheckedTypes();
+  const since = _getSince();
 
   const _abort = () => {
     _clearInFlight = false;
@@ -207,6 +224,7 @@ async function _onClearClick() {
       scope,
       origin: scope === "site" ? state.origin : null,
       types,
+      since,
     });
 
     if (!reply || !reply.ok) {
@@ -219,7 +237,12 @@ async function _onClearClick() {
       return;
     }
 
-    if (state.tabId != null) {
+    // Fresh-read the reload pref at click time so a change in the options
+    // page takes effect without needing to close+reopen the popup.
+    const freshPrefs = await browser.runtime.sendMessage({ action: "getPrefs" }).catch(() => null);
+    const reloadAfter = freshPrefs?.reloadAfter !== false;
+
+    if (reloadAfter && state.tabId != null) {
       browser.tabs.reload(state.tabId, { bypassCache: true }).catch(() => {});
     }
     window.close();
@@ -252,7 +275,7 @@ async function init() {
 
   // Single delegated change listener — persist prefs AND update Clear button.
   document.addEventListener("change", (ev) => {
-    if (!ev.target.matches('input[name="cwd-scope"], .cwd-type-list input[type="checkbox"]')) return;
+    if (!ev.target.matches('input[name="cwd-scope"], .cwd-type-list input[type="checkbox"], #cwd-since')) return;
     _persistPrefs();
     _updateClearButton();
   });
@@ -260,14 +283,19 @@ async function init() {
   // Clear button — uses fresh tab/state each click.
   document.getElementById("cwd-clear").addEventListener("click", () => _onClearClick());
 
-  // External writes to prefs (e.g., a concurrent popup) re-sync our UI.
+  // External writes to prefs (e.g., a concurrent popup or the options page)
+  // re-sync our UI live.
   browser.storage.onChanged.addListener((changes, area) => {
     if (area !== "local") return;
     const change = changes[PREFS_KEY];
     if (!change?.newValue) return;
-    _syncCheckboxesFrom(change.newValue);
+    _syncFromPrefs(change.newValue);
     _updateClearButton();
   });
+
+  // Best-effort: clear the toolbar "!" badge when the popup opens, so the
+  // user sees a clean slate while interacting.
+  browser.runtime.sendMessage({ action: "clearBadge" }).catch(() => {});
 
   // ============================================================
   // Now do the awaited work and paint.
@@ -282,7 +310,7 @@ async function init() {
 
   const prefs = (prefsReply && typeof prefsReply === "object")
     ? prefsReply
-    : { scope: "site", types: ["cookies","cache","localStorage","indexedDB","serviceWorkers"] };
+    : { scope: "site", types: ["cookies","cache","localStorage","indexedDB","serviceWorkers"], since: 0 };
 
   const state = _resolveState(activeTabs?.[0]);
   _setSiteState(state);
@@ -296,6 +324,13 @@ async function init() {
     state.internal ? "cwd-scope-all" : (prefs.scope === "all" ? "cwd-scope-all" : "cwd-scope-site"),
   );
   if (scopeRadio) scopeRadio.checked = true;
+
+  // Apply persisted time-period.
+  const sinceSel = document.getElementById("cwd-since");
+  if (sinceSel) {
+    const v = String(typeof prefs.since === "number" ? prefs.since : 0);
+    if ([...sinceSel.options].some(o => o.value === v)) sinceSel.value = v;
+  }
 
   _updateClearButton();
 }
