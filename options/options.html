@@ -10,6 +10,29 @@
   <h1 class="opt-title" data-i18n="optionsTitle">Clear Website Data+ — Options</h1>
 
   <section class="opt-section">
+    <h2 class="opt-section-title" data-i18n="optionsClickTitle">Toolbar icon</h2>
+
+    <fieldset class="opt-radio-group" id="opt-click">
+      <legend class="opt-label" data-i18n="optClickLabel">When you click the toolbar icon (or press F9)</legend>
+      <p class="opt-hint" data-i18n="optClickHint">One-click clean uses the preset (scope, time range, data types) last chosen in the popup.</p>
+
+      <label class="opt-row opt-radio-row">
+        <input type="radio" name="opt-click-action" value="popup">
+        <span class="opt-row-text">
+          <span class="opt-label" data-i18n="optClickPopup">Open the panel (default)</span>
+        </span>
+      </label>
+
+      <label class="opt-row opt-radio-row">
+        <input type="radio" name="opt-click-action" value="clean">
+        <span class="opt-row-text">
+          <span class="opt-label" data-i18n="optClickClean">Clean immediately using the preset</span>
+        </span>
+      </label>
+    </fieldset>
+  </section>
+
+  <section class="opt-section">
     <h2 class="opt-section-title" data-i18n="optionsBehaviorTitle">Behavior</h2>
 
     <label class="opt-row">

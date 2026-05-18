@@ -45,6 +45,11 @@
   "notifyFailureTitle":         { "message": "Clear Website Data+ — alcuni dati non sono stati cancellati" },
 
   "optionsTitle":               { "message": "Clear Website Data+ — Opzioni" },
+  "optionsClickTitle":          { "message": "Icona nella barra" },
+  "optClickLabel":              { "message": "Quando clicchi sull'icona nella barra (o premi F9)" },
+  "optClickHint":               { "message": "La pulizia rapida usa il preset (ambito, periodo, tipi di dati) scelto l'ultima volta nel pannello." },
+  "optClickPopup":              { "message": "Apri il pannello (predefinito)" },
+  "optClickClean":              { "message": "Cancella subito usando il preset" },
   "optionsBehaviorTitle":       { "message": "Comportamento" },
   "optionsDiagTitle":           { "message": "Diagnostica" },
   "optReloadLabel":             { "message": "Ricarica la scheda attiva dopo la cancellazione" },

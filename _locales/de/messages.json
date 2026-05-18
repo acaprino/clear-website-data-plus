@@ -45,6 +45,11 @@
   "notifyFailureTitle":         { "message": "Clear Website Data+ — einige Daten wurden nicht gelöscht" },
 
   "optionsTitle":               { "message": "Clear Website Data+ — Optionen" },
+  "optionsClickTitle":          { "message": "Symbolleisten-Symbol" },
+  "optClickLabel":              { "message": "Beim Klick auf das Symbol (oder F9-Taste)" },
+  "optClickHint":               { "message": "Die Sofort-Löschung verwendet die zuletzt im Panel gewählten Einstellungen (Bereich, Zeitraum, Datentypen)." },
+  "optClickPopup":              { "message": "Panel öffnen (Standard)" },
+  "optClickClean":              { "message": "Sofort mit der Voreinstellung löschen" },
   "optionsBehaviorTitle":       { "message": "Verhalten" },
   "optionsDiagTitle":           { "message": "Diagnose" },
   "optReloadLabel":             { "message": "Aktiven Tab nach dem Löschen neu laden" },

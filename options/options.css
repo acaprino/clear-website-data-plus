@@ -73,13 +73,33 @@ body {
 
 .opt-row:hover { background: var(--opt-hover); }
 
-.opt-row input[type="checkbox"] {
+.opt-row input[type="checkbox"],
+.opt-row input[type="radio"] {
   width: 15px;
   height: 15px;
   margin-top: 1px;
   flex-shrink: 0;
   accent-color: var(--opt-accent);
   cursor: pointer;
+}
+
+.opt-radio-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+}
+
+.opt-radio-group > legend {
+  padding: 0;
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.opt-radio-group > .opt-hint {
+  display: block;
+  margin: 0 0 4px;
 }
 
 .opt-row-text {

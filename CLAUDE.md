@@ -84,7 +84,7 @@ Unknown values silently coerce back to defaults via `_sanitizePrefs`. Adding a n
 
 ## Versioning
 
-Tied: `manifest.json` `version` and `package.json` `version` must match. Bump together. Current: **0.2.0**.
+Tied: `manifest.json` `version` and `package.json` `version` must match. Bump together. Current: **0.2.2**.
 
 ## What NOT to do
 

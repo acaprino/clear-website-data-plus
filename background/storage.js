@@ -18,6 +18,8 @@ const ALLOWED_SINCE = Object.freeze([
   SINCE_ALL, SINCE_15_MIN, SINCE_1_HOUR, SINCE_24_HOURS, SINCE_1_WEEK,
 ]);
 
+const ALLOWED_CLICK_ACTIONS = Object.freeze(["popup", "clean"]);
+
 const DEFAULT_PREFS = Object.freeze({
   scope: "site",                // "site" | "all"
   types: [
@@ -28,6 +30,7 @@ const DEFAULT_PREFS = Object.freeze({
     "serviceWorkers",
   ],
   since: SINCE_ALL,             // 0 | 15min | 1h | 24h | 1w
+  clickAction: "popup",         // "popup" | "clean" — toolbar icon / F9 behavior
   notifyOnFailure: true,        // show OS notification when clear() reports errors
   reloadAfter: true,            // reload the active tab after a successful clear
   debug: false,                 // verbose console logging
@@ -66,6 +69,9 @@ function _sanitizePrefs(raw) {
     if (typeof raw.since === "number" && ALLOWED_SINCE.includes(raw.since)) {
       out.since = raw.since;
     }
+    if (typeof raw.clickAction === "string" && ALLOWED_CLICK_ACTIONS.includes(raw.clickAction)) {
+      out.clickAction = raw.clickAction;
+    }
     if (typeof raw.notifyOnFailure === "boolean") out.notifyOnFailure = raw.notifyOnFailure;
     if (typeof raw.reloadAfter     === "boolean") out.reloadAfter     = raw.reloadAfter;
     if (typeof raw.debug           === "boolean") out.debug           = raw.debug;
@@ -95,6 +101,7 @@ globalThis.CWD_STORAGE = Object.freeze({
   DEFAULT_PREFS,
   ALLOWED_TYPES,
   ALLOWED_SINCE,
+  ALLOWED_CLICK_ACTIONS,
   SINCE_ALL, SINCE_15_MIN, SINCE_1_HOUR, SINCE_24_HOURS, SINCE_1_WEEK,
   getPrefs,
   setPrefs,

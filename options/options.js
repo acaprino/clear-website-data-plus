@@ -11,6 +11,10 @@ const FIELDS = Object.freeze([
   { id: "opt-debug",  key: "debug" },
 ]);
 
+const RADIO_GROUPS = Object.freeze([
+  { name: "opt-click-action", key: "clickAction", allowed: ["popup", "clean"], fallback: "popup" },
+]);
+
 const PREFS_KEY = "cwd.prefs.v1";
 
 function _t(key, fallback) {
@@ -31,6 +35,12 @@ function _applyPrefsToUI(prefs) {
     const el = document.getElementById(f.id);
     if (!el) continue;
     el.checked = !!prefs[f.key];
+  }
+  for (const g of RADIO_GROUPS) {
+    const raw = prefs[g.key];
+    const value = g.allowed.includes(raw) ? raw : g.fallback;
+    const radios = document.querySelectorAll(`input[type="radio"][name="${g.name}"]`);
+    for (const r of radios) r.checked = (r.value === value);
   }
 }
 
@@ -66,6 +76,17 @@ async function init() {
     const el = document.getElementById(f.id);
     if (!el) continue;
     el.addEventListener("change", () => _saveOne(f.key, el.checked));
+  }
+
+  for (const g of RADIO_GROUPS) {
+    const radios = document.querySelectorAll(`input[type="radio"][name="${g.name}"]`);
+    for (const r of radios) {
+      r.addEventListener("change", () => {
+        if (!r.checked) return;
+        const v = g.allowed.includes(r.value) ? r.value : g.fallback;
+        _saveOne(g.key, v);
+      });
+    }
   }
 
   // Live-sync from external writes (popup, concurrent options page).

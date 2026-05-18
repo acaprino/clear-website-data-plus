@@ -45,6 +45,11 @@
   "notifyFailureTitle":         { "message": "Clear Website Data+ — algunos datos no se borraron" },
 
   "optionsTitle":               { "message": "Clear Website Data+ — Opciones" },
+  "optionsClickTitle":          { "message": "Icono de la barra" },
+  "optClickLabel":              { "message": "Al hacer clic en el icono de la barra (o pulsar F9)" },
+  "optClickHint":               { "message": "El borrado rápido usa el preajuste (ámbito, periodo, tipos de datos) elegido la última vez en el panel." },
+  "optClickPopup":              { "message": "Abrir el panel (predeterminado)" },
+  "optClickClean":              { "message": "Borrar de inmediato con el preajuste" },
   "optionsBehaviorTitle":       { "message": "Comportamiento" },
   "optionsDiagTitle":           { "message": "Diagnóstico" },
   "optReloadLabel":             { "message": "Recargar la pestaña activa después de borrar" },

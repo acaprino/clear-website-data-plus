@@ -45,6 +45,11 @@
   "notifyFailureTitle":         { "message": "Clear Website Data+ — some data couldn't be cleared" },
 
   "optionsTitle":               { "message": "Clear Website Data+ — Options" },
+  "optionsClickTitle":          { "message": "Toolbar icon" },
+  "optClickLabel":              { "message": "When you click the toolbar icon (or press F9)" },
+  "optClickHint":               { "message": "One-click clean uses the preset (scope, time range, data types) last chosen in the popup." },
+  "optClickPopup":              { "message": "Open the panel (default)" },
+  "optClickClean":              { "message": "Clean immediately using the preset" },
   "optionsBehaviorTitle":       { "message": "Behavior" },
   "optionsDiagTitle":           { "message": "Diagnostics" },
   "optReloadLabel":             { "message": "Reload the active tab after clearing" },

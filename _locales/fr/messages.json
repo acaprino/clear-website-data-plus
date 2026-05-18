@@ -45,6 +45,11 @@
   "notifyFailureTitle":         { "message": "Clear Website Data+ — certaines données n'ont pas été effacées" },
 
   "optionsTitle":               { "message": "Clear Website Data+ — Options" },
+  "optionsClickTitle":          { "message": "Icône de la barre d'outils" },
+  "optClickLabel":              { "message": "Quand vous cliquez sur l'icône de la barre (ou appuyez sur F9)" },
+  "optClickHint":               { "message": "L'effacement en un clic utilise le préréglage (portée, période, types de données) choisi en dernier dans le panneau." },
+  "optClickPopup":              { "message": "Ouvrir le panneau (par défaut)" },
+  "optClickClean":              { "message": "Effacer immédiatement avec le préréglage" },
   "optionsBehaviorTitle":       { "message": "Comportement" },
   "optionsDiagTitle":           { "message": "Diagnostic" },
   "optReloadLabel":             { "message": "Recharger l'onglet actif après l'effacement" },
