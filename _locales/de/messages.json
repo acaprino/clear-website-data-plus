@@ -33,6 +33,8 @@
 
   "globalChip":                 { "message": "global" },
   "globalChipTitle":            { "message": "Firefox kann diesen Datentyp nicht auf eine einzelne Seite beschränken: er wird global gelöscht." },
+  "hostWideChip":               { "message": "ganzer Host" },
+  "hostWideChipTitle":          { "message": "Wird für den gesamten Hostnamen gelöscht: alle Schemata und Ports (z. B. http und https) dieser Seite, nicht nur die angezeigte Adresse." },
 
   "clearButton":                { "message": "Löschen" },
   "clearing":                   { "message": "Wird gelöscht…" },

@@ -70,8 +70,8 @@ Unknown values silently coerce back to defaults via `_sanitizePrefs`. Adding a n
 
 ## Firefox API limits to remember
 
-- `browsingData.remove({origins: [...]})` only honors `origins` for `cookies`, `localStorage`, `indexedDB`, `serviceWorkers`. Cache, plugin data, form data, passwords ignore `origins` and clear globally → surfaced in popup with the `(global)` chip.
-- `history` and `downloads` ignore `origins` entirely → we filter manually via `history.search` + `downloads.search`. History is paginated (10k/page, 20-page cap = 200k entries) to handle large histories.
+- Firefox's `browsingData.remove()` does **not** support Chrome's `origins` option (Bugzilla 1632796 still open) — passing it throws `Unexpected property "origins"`. Use `hostnames: [host]` instead. It's honored for `cookies`, `localStorage`, `indexedDB`, `serviceWorkers`. **Caveat:** `hostnames` matches by host only (no scheme/port), so a site clear is *wider* than the tab's exact origin — clearing `https://site:8443` also clears `http://site` and other ports of that host. Acceptable (same registrable host, no narrower API exists) but worth knowing for origin-keyed stores. Cache, plugin data, form data, passwords ignore the filter and clear globally → surfaced in popup with the `(global)` chip.
+- `history` and `downloads` ignore the host filter entirely → we filter manually via `history.search` + `downloads.search`. History is paginated (10k/page, 20-page cap = 200k entries) to handle large histories.
 - Cookie sweep walks up parent hostnames but **never queries the TLD** (would wipe all `.com` cookies). Stops at depth 3.
 - `__Host-` / `__Secure-` cookie prefixes have scheme-locked semantics — no http/https flip retry, the failure is reported.
 
@@ -84,7 +84,7 @@ Unknown values silently coerce back to defaults via `_sanitizePrefs`. Adding a n
 
 ## Versioning
 
-Tied: `manifest.json` `version` and `package.json` `version` must match. Bump together. Current: **0.2.2**.
+Tied: `manifest.json` `version` and `package.json` `version` must match. Bump together. Current: **0.2.3**.
 
 ## What NOT to do
 

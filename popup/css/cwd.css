@@ -269,7 +269,7 @@ body {
   white-space: nowrap;
 }
 
-/* (global) chip */
+/* (global) / (host-wide) chips */
 .cwd-chip {
   flex-shrink: 0;
   font-size: 9.5px;
@@ -281,6 +281,16 @@ body {
   background: color-mix(in srgb, var(--cwd-color) 12%, transparent);
   color: var(--cwd-text-secondary);
   cursor: help;
+}
+
+/* host-wide is a milder caveat than global — softer tint to match */
+.cwd-chip--hostwide {
+  background: color-mix(in srgb, var(--cwd-color) 7%, transparent);
+}
+
+/* host-wide only applies per-site; in all scope these clear globally too */
+body.cwd-scope-all .cwd-chip--hostwide {
+  display: none;
 }
 
 /* ----------------------------------------------------------

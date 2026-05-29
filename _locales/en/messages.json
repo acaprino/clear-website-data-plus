@@ -33,6 +33,8 @@
 
   "globalChip":                 { "message": "global" },
   "globalChipTitle":            { "message": "Firefox cannot scope this data type to a single site. It will be cleared globally." },
+  "hostWideChip":               { "message": "host-wide" },
+  "hostWideChipTitle":          { "message": "Cleared for the entire hostname — every scheme and port (e.g. http and https) of this site, not just the exact address shown." },
 
   "clearButton":                { "message": "Clear" },
   "clearing":                   { "message": "Clearing…" },

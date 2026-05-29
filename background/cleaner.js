@@ -2,9 +2,12 @@
    Clear Website Data+ — Cleaner
    Routes each UI data type to the right Firefox API.
 
-   Firefox's browsingData.remove({origins:[...]}) only honors the
-   origins filter for: cookies, localStorage, indexedDB,
-   serviceWorkers. Other types ignore origins and clear globally.
+   Firefox's browsingData.remove() does NOT support the Chrome
+   `origins` option (Bugzilla 1632796 is still open) — passing it
+   throws 'Unexpected property "origins"'. The Firefox-native
+   per-site filter is `hostnames`, honored for: cookies,
+   localStorage, indexedDB, serviceWorkers. Other types ignore the
+   filter and clear globally.
    ============================================================ */
 
 const ORIGIN_AWARE = Object.freeze(new Set([
@@ -201,16 +204,29 @@ async function clear({ scope, origin, types, since }) {
   const sinceAbs = _since > 0 ? (Date.now() - _since) : 0;
   summary._since = _since;
 
-  // 1. Origin-aware types via browsingData.remove({origins})
+  // 1. Origin-aware types via browsingData.remove({hostnames})
+  //    `hostnames` (not Chrome's `origins`) is the filter Firefox accepts.
+  //    NOTE: it matches by HOST ONLY — Firefox can't express scheme/port in a
+  //    hostname — so this is WIDER than the old exact-origin match: clearing
+  //    https://site:8443 also clears http://site and other ports of that host.
+  //    For a "clear this site" tool that widening is acceptable (always the
+  //    same registrable host, never an unrelated domain) and there's no
+  //    narrower API (Bugzilla 1632796). Cookies still get the eTLD+1 sweep below.
   if (scope === "site") {
     const dt = _pickKeys(types, ORIGIN_AWARE);
-    if (Object.keys(dt).length) {
+    const host = _hostFromOrigin(origin);
+    if (Object.keys(dt).length && host) {
       const r = await _safe(
-        () => browser.browsingData.remove({ origins: [origin], since: sinceAbs }, dt),
+        () => browser.browsingData.remove({ hostnames: [host], since: sinceAbs }, dt),
         "browsingDataSite",
       );
       if (r.ok) Object.assign(summary, dt);
       else errors.push({ phase: "browsingDataSite", message: r.error });
+    } else if (Object.keys(dt).length && !host) {
+      // Unreachable for validated site clears (handler enforces a parseable
+      // origin), but fail loud rather than silently report success if that
+      // upstream guarantee ever regresses.
+      errors.push({ phase: "browsingDataSite", message: "could not derive host from origin" });
     }
   } else {
     const dt = _pickKeys(types, ALL_SCOPE_BROWSING_DATA);
@@ -238,7 +254,7 @@ async function clear({ scope, origin, types, since }) {
     }
   }
 
-  // 3. per-site history/downloads (browsingData ignores origins for these)
+  // 3. per-site history/downloads (browsingData ignores the host filter for these)
   if (scope === "site") {
     if (types.includes("history")) {
       const h = await _filterDeleteHistory(origin);

@@ -33,6 +33,8 @@
 
   "globalChip":                 { "message": "globale" },
   "globalChipTitle":            { "message": "Firefox non può limitare questo tipo di dati a un singolo sito: verrà cancellato globalmente." },
+  "hostWideChip":               { "message": "intero host" },
+  "hostWideChipTitle":          { "message": "Cancellato per l'intero hostname: tutti gli schemi e le porte (es. http e https) di questo sito, non solo l'indirizzo esatto mostrato." },
 
   "clearButton":                { "message": "Cancella" },
   "clearing":                   { "message": "Cancellazione…" },

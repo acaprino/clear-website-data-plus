@@ -24,9 +24,9 @@ const GROUPS = Object.freeze([
     types: Object.freeze([
       Object.freeze({ key: "cookies",        global: false }),
       Object.freeze({ key: "cache",          global: true  }),
-      Object.freeze({ key: "localStorage",   global: false }),
-      Object.freeze({ key: "indexedDB",      global: false }),
-      Object.freeze({ key: "serviceWorkers", global: false }),
+      Object.freeze({ key: "localStorage",   global: false, hostWide: true }),
+      Object.freeze({ key: "indexedDB",      global: false, hostWide: true }),
+      Object.freeze({ key: "serviceWorkers", global: false, hostWide: true }),
       Object.freeze({ key: "pluginData",     global: true  }),
     ]),
   }),
@@ -89,6 +89,15 @@ function _buildTypeList(groupSpec, checkedSet) {
       chip.textContent = _t("globalChip");
       chip.title = _t("globalChipTitle");
       li.appendChild(chip);
+    } else if (t.hostWide) {
+      // Origin-keyed stores cleared via browsingData {hostnames} — matches the
+      // whole host (every scheme/port), wider than the exact origin shown.
+      // Only meaningful in site scope; CSS hides it under body.cwd-scope-all.
+      const chip = document.createElement("span");
+      chip.className = "cwd-chip cwd-chip--hostwide";
+      chip.textContent = _t("hostWideChip");
+      chip.title = _t("hostWideChipTitle");
+      li.appendChild(chip);
     }
 
     ul.appendChild(li);
@@ -103,6 +112,7 @@ function _syncFromPrefs(prefs) {
   const scope = prefs.scope === "all" ? "all" : "site";
   const radio = document.getElementById(scope === "all" ? "cwd-scope-all" : "cwd-scope-site");
   if (radio && !radio.disabled) radio.checked = true;
+  _applyScopeChips();
 
   const sinceSel = document.getElementById("cwd-since");
   if (sinceSel) {
@@ -261,6 +271,12 @@ function _updateClearButton() {
   if (btn) btn.disabled = _clearInFlight || _getCheckedTypes().length === 0;
 }
 
+// The (host-wide) chip only applies in site scope; in all scope these types
+// clear globally like everything else. Toggle a body class the CSS keys off.
+function _applyScopeChips() {
+  document.body.classList.toggle("cwd-scope-all", _getScope() === "all");
+}
+
 async function init() {
   _applyI18n();
 
@@ -276,6 +292,7 @@ async function init() {
   // Single delegated change listener — persist prefs AND update Clear button.
   document.addEventListener("change", (ev) => {
     if (!ev.target.matches('input[name="cwd-scope"], .cwd-type-list input[type="checkbox"], #cwd-since')) return;
+    if (ev.target.matches('input[name="cwd-scope"]')) _applyScopeChips();
     _persistPrefs();
     _updateClearButton();
   });
@@ -324,6 +341,7 @@ async function init() {
     state.internal ? "cwd-scope-all" : (prefs.scope === "all" ? "cwd-scope-all" : "cwd-scope-site"),
   );
   if (scopeRadio) scopeRadio.checked = true;
+  _applyScopeChips();
 
   // Apply persisted time-period.
   const sinceSel = document.getElementById("cwd-since");

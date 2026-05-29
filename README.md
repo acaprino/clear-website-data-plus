@@ -80,7 +80,7 @@ No `<all_urls>`, no host permissions, no remote code.
 |---|---|
 | `browsingData` | The primary clearing API. |
 | `cookies` | Subdomain cookie sweep. |
-| `history`, `downloads` | Per-site filtering (browsingData ignores `origins` for these). |
+| `history`, `downloads` | Per-site filtering (browsingData ignores the host filter for these). |
 | `activeTab` | Reads the active tab URL and reloads it after clear. |
 | `storage` | Persists the user's last selection. |
 | `theme` | Native-panel look via `browser.theme.getCurrent` / `onUpdated`. |

@@ -33,6 +33,8 @@
 
   "globalChip":                 { "message": "global" },
   "globalChipTitle":            { "message": "Firefox no puede limitar este tipo de datos a un solo sitio: se borrará globalmente." },
+  "hostWideChip":               { "message": "todo el host" },
+  "hostWideChipTitle":          { "message": "Se borra para todo el nombre de host: todos los esquemas y puertos (p. ej. http y https) de este sitio, no solo la dirección exacta mostrada." },
 
   "clearButton":                { "message": "Borrar" },
   "clearing":                   { "message": "Borrando…" },

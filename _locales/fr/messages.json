@@ -33,6 +33,8 @@
 
   "globalChip":                 { "message": "global" },
   "globalChipTitle":            { "message": "Firefox ne peut pas limiter ce type de données à un seul site : il sera effacé globalement." },
+  "hostWideChip":               { "message": "hôte entier" },
+  "hostWideChipTitle":          { "message": "Effacé pour l'ensemble du nom d'hôte : tous les schémas et ports (p. ex. http et https) de ce site, pas seulement l'adresse exacte affichée." },
 
   "clearButton":                { "message": "Effacer" },
   "clearing":                   { "message": "Effacement…" },
