@@ -85,6 +85,13 @@ function applyTheme(theme) {
   const accent = _toCSSColor(rawAccent);
   if (accent) s.setProperty("--ff-popup-accent", accent);
 
+  // Report the verdict to the background: built-in themes expose no colors,
+  // and the background page (never rendered) can't trust its own matchMedia /
+  // system colors — this visible document can. Keeps the toolbar icon in sync.
+  try {
+    browser?.runtime?.sendMessage({ action: "themeVerdict", dark })?.catch?.(() => {});
+  } catch { /* messaging unavailable */ }
+
   return dark;
 }
 

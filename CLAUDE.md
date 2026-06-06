@@ -44,7 +44,7 @@ theme-utils.js -> log.js -> icon.js -> badge.js
 |---|---|---|
 | `CWD_THEME` | theme-utils.js | LWT color → dark/light verdict, accent picking |
 | `CWD_LOG` | log.js | Debug-gated console wrappers (`debug` is silent unless prefs.debug=true; `warn`/`error` always emit) |
-| `CWD_ICON` | icon.js | Programmatic `action.setIcon()` based on theme detection + `matchMedia(prefers-color-scheme)`. **Bypasses `manifest.theme_icons`** because the default Firefox theme (even in OS dark mode) doesn't trigger theme_icons |
+| `CWD_ICON` | icon.js | Programmatic `action.setIcon()`. Verdict chain: theme colors → popup-reported `themeVerdict` → `-moz-Dialog` probe → `matchMedia(prefers-color-scheme)`. **Bypasses `manifest.theme_icons`** because the default Firefox theme (even in OS dark mode) doesn't trigger theme_icons. Built-in themes report EMPTY `theme.colors` and the background page is never rendered (its MQL lies/lags) — hence the popup verdict, a delayed re-check after `theme.onUpdated`, and a re-apply on `windows.onFocusChanged` |
 | `CWD_BADGE` | badge.js | Red `!` badge on clear failure, cleared on next success or popup open |
 | `CWD_STORAGE` | storage.js | Single key `cwd.prefs.v1`, schema-sanitized read/write, ALLOWED_TYPES + ALLOWED_SINCE whitelists |
 | `CWD_NOTIFY` | notify.js | Failure-only OS notification, gated by `prefs.notifyOnFailure` |
@@ -84,7 +84,7 @@ Unknown values silently coerce back to defaults via `_sanitizePrefs`. Adding a n
 
 ## Versioning
 
-Tied: `manifest.json` `version` and `package.json` `version` must match. Bump together. Current: **0.2.3**.
+Tied: `manifest.json` `version` and `package.json` `version` must match. Bump together. Current: **0.2.4**.
 
 ## What NOT to do
 

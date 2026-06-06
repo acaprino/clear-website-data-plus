@@ -179,6 +179,14 @@ browser.runtime.onMessage.addListener((msg, sender) => {
       CWD_BADGE.clear().catch(() => {});
       return Promise.resolve({ ok: true });
 
+    case "themeVerdict": {
+      // Popup-computed dark/light verdict — see CWD_ICON.applyVerdict.
+      if (typeof msg.dark === "boolean") {
+        CWD_ICON.applyVerdict(msg.dark).catch(() => {});
+      }
+      return Promise.resolve({ ok: true });
+    }
+
     default:
       return; // ignore unrelated messages
   }
